@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".login_singin_Fragments.LoginFragment">
+
+  <LinearLayout
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      android:orientation="vertical">
+
+      <ScrollView
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content">
+
+
+
+          <androidx.cardview.widget.CardView
+              android:id="@+id/cardView"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:elevation="4dp"
+              app:cardUseCompatPadding="true">
+
+
+              <LinearLayout
+                  android:layout_width="match_parent"
+                  android:layout_height="match_parent"
+                  android:layout_margin="15dp"
+                  android:orientation="vertical">
+
+                  <com.airbnb.lottie.LottieAnimationView
+                      android:id="@+id/animation_view"
+                      android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:layout_gravity="center"
+                      app:lottie_autoPlay="true"
+                      app:lottie_loop="true"
+                      app:lottie_rawRes="@raw/loin" />
+
+                  <RelativeLayout
+                      android:layout_width="match_parent"
+                      android:layout_height="wrap_content">
+
+                      <TextView
+                          android:id="@+id/textView"
+                          android:layout_width="wrap_content"
+                          android:layout_height="wrap_content"
+                          android:text="Welcome,"
+                          android:textColor="@android:color/black"
+                          android:textSize="28sp"
+                          android:textStyle="bold"
+
+
+                          />
+
+                      <TextView
+                          android:id="@+id/txtsignup"
+                          android:layout_width="wrap_content"
+                          android:layout_height="wrap_content"
+                          android:layout_alignParentRight="true"
+                          android:layout_marginTop="4dp"
+                          android:text="Sign Up"
+                          android:textColor="@color/colorPrimary"
+                          android:textSize="20sp"
+                          android:textStyle="bold" />
+                  </RelativeLayout>
+
+                  <TextView
+                      android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:fontFamily="sans-serif-light"
+                      android:text="Sign in to Continue"
+                      android:textStyle="bold"
+
+
+                      />
+
+                  <com.google.android.material.textfield.TextInputLayout
+                      android:layout_width="match_parent"
+                      android:layout_height="wrap_content"
+                      android:layout_marginTop="40dp">
+
+
+                      <EditText
+                          android:id="@+id/ed_email"
+                          android:layout_width="match_parent"
+                          android:layout_height="wrap_content"
+                          android:ems="10"
+                          android:hint="Email"
+
+                          />
+                  </com.google.android.material.textfield.TextInputLayout>
+
+                  <com.google.android.material.textfield.TextInputLayout
+                      android:layout_width="match_parent"
+                      android:layout_height="wrap_content"
+                      android:layout_marginTop="20dp">
+
+                      <EditText
+                          android:id="@+id/ed_password"
+                          android:layout_width="match_parent"
+                          android:layout_height="42dp"
+                          android:ems="10"
+                          android:hint="Password"
+                          android:inputType="textPassword" />
+                  </com.google.android.material.textfield.TextInputLayout>
+
+
+                  <Button
+                      android:id="@+id/btn_login"
+                      android:layout_width="match_parent"
+                      android:layout_height="50dp"
+                      android:layout_marginTop="32dp"
+                      android:background="@drawable/round_btn"
+                      android:backgroundTint="@color/colorPrimary"
+                      android:padding="15dp"
+                      android:text="Login"
+                      android:textColor="@android:color/white"
+                      android:textSize="15dp" />
+
+
+
+
+              </LinearLayout>
+
+
+          </androidx.cardview.widget.CardView>
+
+      </ScrollView>
+
+
+<!--      <com.airbnb.lottie.LottieAnimationView-->
+<!--          android:id="@+id/animation_vie"-->
+<!--          android:layout_width="match_parent"-->
+<!--          android:layout_height="wrap_content"-->
+<!--          android:scaleType="center"-->
+<!--          android:layout_gravity="center"-->
+<!--          app:lottie_autoPlay="true"-->
+<!--          app:lottie_loop="true"-->
+<!--          app:lottie_rawRes="@raw/was" />-->
+
+      <Button
+          android:id="@+id/button"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:text="Button" />
+
+
+  </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
