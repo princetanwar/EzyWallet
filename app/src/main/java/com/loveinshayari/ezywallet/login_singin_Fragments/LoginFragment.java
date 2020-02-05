@@ -1,14 +1,11 @@
 package com.loveinshayari.ezywallet.login_singin_Fragments;
 
 
-import android.Manifest;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.content.pm.PackageManager;
 import android.os.Bundle;
-import android.telephony.TelephonyManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,8 +16,6 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
@@ -32,7 +27,6 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-import com.loveinshayari.ezywallet.Main3Activity;
 import com.loveinshayari.ezywallet.R;
 import com.loveinshayari.ezywallet.activitys.Main2Activity;
 
@@ -49,7 +43,7 @@ public class LoginFragment extends Fragment implements View.OnClickListener {
     private NavController navController;
     private TextView singup;
     private Button login;
-    private Button button;
+
 
     EditText ed_email, ed_password;
 
@@ -78,11 +72,11 @@ public class LoginFragment extends Fragment implements View.OnClickListener {
         login = view.findViewById(R.id.btn_login);
         ed_email = view.findViewById(R.id.ed_email);
         ed_password = view.findViewById(R.id.ed_password);
-        button = view.findViewById(R.id.button);
+
 
         singup.setOnClickListener(this);
         login.setOnClickListener(this);
-        button.setOnClickListener(this);
+
 
     }
 
@@ -95,9 +89,6 @@ public class LoginFragment extends Fragment implements View.OnClickListener {
             case R.id.btn_login:
                 login();
                 //    startActivity(new Intent(getContext(),Main2Activity.class));
-                break;
-            case R.id.button:
-                startActivity(new Intent(getContext(), Main3Activity.class));
                 break;
 
 
@@ -169,7 +160,7 @@ public class LoginFragment extends Fragment implements View.OnClickListener {
         SharedPreferences preferences = getActivity().getSharedPreferences("com.loveinshayari.ezywallet_login_status",Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = preferences.edit();
         editor.putString("login_status","on");
-        editor.commit();
+        editor.apply();
     }
 }
 

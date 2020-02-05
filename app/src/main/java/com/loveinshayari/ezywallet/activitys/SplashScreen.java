@@ -1,4 +1,4 @@
-package com.loveinshayari.ezywallet;
+package com.loveinshayari.ezywallet.activitys;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -8,8 +8,7 @@ import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.widget.ProgressBar;
 
-import com.loveinshayari.ezywallet.activitys.Main2Activity;
-import com.loveinshayari.ezywallet.activitys.MainActivity;
+import com.loveinshayari.ezywallet.R;
 
 public class SplashScreen extends AppCompatActivity {
     int a = 0;

@@ -81,14 +81,16 @@
                   <com.google.android.material.textfield.TextInputLayout
                       android:layout_width="match_parent"
                       android:layout_height="wrap_content"
+                      style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                       android:layout_marginTop="40dp">
 
 
-                      <EditText
+                      <com.google.android.material.textfield.TextInputEditText
                           android:id="@+id/ed_email"
                           android:layout_width="match_parent"
                           android:layout_height="wrap_content"
                           android:ems="10"
+                          android:inputType="textEmailAddress"
                           android:hint="Email"
 
                           />
@@ -97,9 +99,10 @@
                   <com.google.android.material.textfield.TextInputLayout
                       android:layout_width="match_parent"
                       android:layout_height="wrap_content"
+                      style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                       android:layout_marginTop="20dp">
 
-                      <EditText
+                      <com.google.android.material.textfield.TextInputEditText
                           android:id="@+id/ed_password"
                           android:layout_width="match_parent"
                           android:layout_height="42dp"
@@ -112,7 +115,7 @@
                   <Button
                       android:id="@+id/btn_login"
                       android:layout_width="match_parent"
-                      android:layout_height="50dp"
+                      android:layout_height="wrap_content"
                       android:layout_marginTop="32dp"
                       android:background="@drawable/round_btn"
                       android:backgroundTint="@color/colorPrimary"
@@ -142,11 +145,7 @@
 <!--          app:lottie_loop="true"-->
 <!--          app:lottie_rawRes="@raw/was" />-->
 
-      <Button
-          android:id="@+id/button"
-          android:layout_width="match_parent"
-          android:layout_height="wrap_content"
-          android:text="Button" />
+
 
 
   </LinearLayout>
