@@ -1,37 +1,48 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <item
-        android:id="@+id/home"
-        android:icon="@drawable/home_24dp"
-        android:title="Home" />
+    <group android:checkableBehavior="single">
 
-    <item
-        android:id="@+id/wallet"
-        android:icon="@drawable/wallet"
-        android:menuCategory="secondary"
-        android:title="Wallet" />
+        <item
+            android:id="@+id/home"
+            android:icon="@drawable/home_24dp"
+            android:title="Home" />
 
-    <item
-        android:id="@+id/proflie"
-        android:icon="@drawable/profile_24dp"
-        android:menuCategory="secondary"
-        android:title="Profile" />
+        <item
+            android:id="@+id/wallet"
+            android:icon="@drawable/wallet"
+            android:title="Wallet" />
 
-    <item
-        android:id="@+id/team"
-        android:icon="@drawable/team_24dp"
-        android:menuCategory="secondary"
-        android:title="My Team" />
+        <item
+            android:id="@+id/proflie"
+            android:icon="@drawable/profile_24dp"
+            android:title="Profile" />
 
-    <item
-        android:id="@+id/invite"
-        android:icon="@drawable/ic_menu_share"
-        android:menuCategory="secondary"
-        android:title="invite &amp; Earn" />
-    <item
-        android:id="@+id/logout"
-        android:icon="@drawable/logout"
-        android:menuCategory="secondary"
-        android:title="log out" />
+
+        <item
+            android:id="@+id/team"
+            android:icon="@drawable/team_24dp"
+            android:title="My Team" />
+    </group>
+
+    <item android:title="communicate">
+        <menu>
+            <item
+                android:id="@+id/rateUs"
+                android:icon="@drawable/rateus"
+                android:title="Rate Us" />
+            <item
+                android:id="@+id/invite"
+                android:icon="@drawable/ic_menu_share"
+                android:menuCategory="secondary"
+                android:title="invite &amp; Earn" />
+            <item
+                android:id="@+id/logout"
+                android:icon="@drawable/logout"
+                android:menuCategory="secondary"
+                android:title="log out" />
+        </menu>
+    </item>
+
+
 </menu>

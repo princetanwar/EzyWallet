@@ -1,8 +1,11 @@
 package com.loveinshayari.ezywallet.activitys;
 
+import android.content.ActivityNotFoundException;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.widget.Toast;
@@ -13,80 +16,118 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
-import androidx.navigation.NavController;
-import androidx.navigation.Navigation;
-import androidx.navigation.ui.AppBarConfiguration;
-import androidx.navigation.ui.NavigationUI;
 
+import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.google.android.material.navigation.NavigationView;
 import com.loveinshayari.ezywallet.R;
+import com.loveinshayari.ezywallet.nav_fragments.ProfileFragment;
+import com.loveinshayari.ezywallet.nav_fragments.WalletFragment;
+import com.loveinshayari.ezywallet.nav_fragments.homeFragment;
+import com.loveinshayari.ezywallet.nav_fragments.themFragment;
 
 public class Main2Activity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     private Toolbar toolbar;
     private DrawerLayout drawerLayout;
     private NavigationView navigationView;
-    private AppBarConfiguration mAppBarConfiguration;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main2);
-        setSupportActionBar(toolbar);
+
         toolbar = findViewById(R.id.main_toolbar);
         setSupportActionBar(toolbar);
 
         drawerLayout = findViewById(R.id.drawer_layout);
         navigationView = findViewById(R.id.navview);
 
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        drawerLayout.addDrawerListener(toggle);
+        toggle.syncState();
+
         navigationView.setNavigationItemSelectedListener(this);
 
-        mAppBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.home, R.id.wallet, R.id.proflie, R.id.team)
-                .setDrawerLayout(drawerLayout)
-                .build();
-        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
-        NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
-        NavigationUI.setupWithNavController(navigationView, navController);
-        ActionBarDrawerToggle actionBarDrawerToggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.drawer_open, R.string.drawer_close);
+        if (savedInstanceState == null) {
+            getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainer, new homeFragment()).commit();
+            navigationView.setCheckedItem(R.id.home);
+        }
 
-        drawerLayout.addDrawerListener(actionBarDrawerToggle);
-        actionBarDrawerToggle.syncState();
-    }
-
-    @Override
-    public boolean onSupportNavigateUp() {
-        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
-        return NavigationUI.navigateUp(navController, mAppBarConfiguration)
-                || super.onSupportNavigateUp();
     }
 
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
+
+            case R.id.home:
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainer, new homeFragment()).commit();
+                break;
+            case R.id.wallet:
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainer, new WalletFragment()).commit();
+                break;
+
+            case R.id.proflie:
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainer, new ProfileFragment()).commit();
+                break;
+
+            case R.id.team:
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainer, new themFragment()).commit();
+                break;
+
+            case R.id.rateUs:
+                try {
+                    startActivity(new Intent(Intent.ACTION_VIEW,
+                            Uri.parse("market://details?id=" + "com.android.chrome")));
+                } catch (ActivityNotFoundException e) {
+                    startActivity(new Intent(Intent.ACTION_VIEW,
+                            Uri.parse("http://play.google.com/store/apps/details?id=" + getPackageName())));
+                }
+                break;
+
             case R.id.invite:
-                Toast.makeText(this, "invite", Toast.LENGTH_SHORT).show();
+
+                Intent sharingIntent = new Intent(Intent.ACTION_SEND);
+                sharingIntent.setType("text/plain");
+                sharingIntent.putExtra(android.content.Intent.EXTRA_TEXT,"http://play.google.com/store/apps/details?id=" + "com.android.chrome");
+                startActivity(Intent.createChooser(sharingIntent, "Share using"));
+
                 break;
             case R.id.logout:
-                Toast.makeText(this, "logout", Toast.LENGTH_SHORT).show();
-                SharedPreferences preferences = getSharedPreferences("com.loveinshayari.ezywallet_login_status", Context.MODE_PRIVATE);
-                SharedPreferences.Editor editor = preferences.edit();
-                editor.putString("login_status", "off");
-                editor.apply();
-                startActivity(new Intent(Main2Activity.this, MainActivity.class));
-                finish();
+                MaterialAlertDialogBuilder alertDialog = new MaterialAlertDialogBuilder(this);
+                alertDialog.setTitle("Log Out");
+                alertDialog.setMessage("are you sure you want to log out");
+                alertDialog.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+
+                        SharedPreferences preferences = getSharedPreferences("com.loveinshayari.ezywallet_login_status", Context.MODE_PRIVATE);
+                        SharedPreferences.Editor editor = preferences.edit();
+                        editor.putString("login_status", "off");
+                        editor.apply();
+                        startActivity(new Intent(Main2Activity.this, MainActivity.class));
+                        finish();
+                    }
+                });
+                alertDialog.setNegativeButton("No", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        Toast.makeText(getApplicationContext(), "cancel", Toast.LENGTH_SHORT).show();
+                    }
+                });
+                alertDialog.show();
                 break;
         }
+        drawerLayout.closeDrawer(GravityCompat.START);
         return true;
     }
 
     @Override
     public void onBackPressed() {
-        if (drawerLayout.isDrawerOpen(GravityCompat.START)){
-            drawerLayout.closeDrawers();
+        if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
+            drawerLayout.closeDrawer(GravityCompat.START);
+        } else {
+            super.onBackPressed();
         }
-        else {
-        super.onBackPressed();}
     }
 }
