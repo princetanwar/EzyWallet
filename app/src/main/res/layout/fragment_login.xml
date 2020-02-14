@@ -13,7 +13,8 @@
 
       <ScrollView
           android:layout_width="match_parent"
-          android:layout_height="wrap_content">
+          android:layout_height="wrap_content"
+          tools:ignore="UselessParent">
 
 
 
@@ -31,14 +32,21 @@
                   android:layout_margin="15dp"
                   android:orientation="vertical">
 
-                  <com.airbnb.lottie.LottieAnimationView
-                      android:id="@+id/animation_view"
-                      android:layout_width="wrap_content"
-                      android:layout_height="wrap_content"
+                  <ImageView
+                      android:layout_width="200dp"
+                      android:layout_height="200dp"
+                      android:src="@drawable/ya"
                       android:layout_gravity="center"
-                      app:lottie_autoPlay="true"
-                      app:lottie_loop="true"
-                      app:lottie_rawRes="@raw/loin" />
+                      />
+
+<!--                  <com.airbnb.lottie.LottieAnimationView-->
+<!--                      android:id="@+id/animation_view"-->
+<!--                      android:layout_width="wrap_content"-->
+<!--                      android:layout_height="wrap_content"-->
+<!--                      android:layout_gravity="center"-->
+<!--                      app:lottie_autoPlay="true"-->
+<!--                      app:lottie_loop="true"-->
+<!--                      app:lottie_rawRes="@raw/loin" />-->
 
                   <RelativeLayout
                       android:layout_width="match_parent"
@@ -48,7 +56,7 @@
                           android:id="@+id/textView"
                           android:layout_width="wrap_content"
                           android:layout_height="wrap_content"
-                          android:text="Welcome,"
+                          android:text="@string/welcome"
                           android:textColor="@android:color/black"
                           android:textSize="28sp"
                           android:textStyle="bold"
@@ -60,9 +68,11 @@
                           android:id="@+id/txtsignup"
                           android:layout_width="wrap_content"
                           android:layout_height="wrap_content"
-                          android:layout_alignParentRight="true"
+                          android:layout_alignParentEnd="true"
+                          android:layout_marginStart="182dp"
                           android:layout_marginTop="4dp"
-                          android:text="Sign Up"
+                          android:layout_toEndOf="@+id/textView"
+                          android:text="@string/sign_up"
                           android:textColor="@color/colorPrimary"
                           android:textSize="20sp"
                           android:textStyle="bold" />
@@ -72,7 +82,7 @@
                       android:layout_width="wrap_content"
                       android:layout_height="wrap_content"
                       android:fontFamily="sans-serif-light"
-                      android:text="Sign in to Continue"
+                      android:text="@string/sign_in_to_continue"
                       android:textStyle="bold"
 
 
@@ -82,6 +92,7 @@
                       android:layout_width="match_parent"
                       android:layout_height="wrap_content"
                       style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                      app:startIconDrawable="@drawable/ic_email"
                       android:layout_marginTop="40dp">
 
 
@@ -91,23 +102,25 @@
                           android:layout_height="wrap_content"
                           android:ems="10"
                           android:inputType="textEmailAddress"
-                          android:hint="Email"
+                          android:hint="@string/email"
 
                           />
                   </com.google.android.material.textfield.TextInputLayout>
 
                   <com.google.android.material.textfield.TextInputLayout
+                      style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                       android:layout_width="match_parent"
                       android:layout_height="wrap_content"
-                      style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                      android:layout_marginTop="20dp">
+                      app:startIconDrawable="@drawable/ic_password"
+                      app:endIconMode="password_toggle"
+                      android:layout_marginTop="10dp">
 
                       <com.google.android.material.textfield.TextInputEditText
                           android:id="@+id/ed_password"
                           android:layout_width="match_parent"
-                          android:layout_height="42dp"
+                          android:layout_height="wrap_content"
                           android:ems="10"
-                          android:hint="Password"
+                          android:hint="@string/password"
                           android:inputType="textPassword" />
                   </com.google.android.material.textfield.TextInputLayout>
 
@@ -120,9 +133,9 @@
                       android:background="@drawable/round_btn"
                       android:backgroundTint="@color/colorPrimary"
                       android:padding="15dp"
-                      android:text="Login"
+                      android:text="@string/login"
                       android:textColor="@android:color/white"
-                      android:textSize="15dp" />
+                      android:textSize="15sp" />
 
 
 
